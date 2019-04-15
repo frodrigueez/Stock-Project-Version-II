@@ -1,6 +1,7 @@
 import argparse
 import os 
 import sys
+from tickers import Tickers
 
 if __name__ == "__main__":
     # process flags
@@ -15,6 +16,8 @@ if __name__ == "__main__":
 
     if args.operation == "Ticker":
         print(f"instantiate Tickers class w {args.ticker_count}")
+        tickers = Tickers(args.ticker_count)
+        tickers.save_tickers(int(args.ticker_count))
     elif args.operation == "Fetcher":
         print(f"instantiate Fetchers class w {args.db} & {args.time_limit}")
     elif args.operation == "Query":
