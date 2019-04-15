@@ -22,7 +22,7 @@ class Tickers:
         driver = webdriver.Chrome('./chromedriver')
         link = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQrender=download"
         driver.get(link)
-        driver.find_element_by_xpath('//*[@id="main_content_lstpagesize"]/option[4]').click()
+        driver.find_element_by_xpath('//*[@id="main_content_lstpagesize"]/option[3]').click()
 
         link = driver.current_url
 
@@ -46,7 +46,7 @@ class Tickers:
                     i = 0
                     i = i + 1
 
-        if self.ticker_count > 110:
+        if int(self.ticker_count) > 110:
             raise IndexError("n passed to save_tickers out of range. n must be <= 110")
         ticker_filename = "tickers.txt"
 
@@ -55,7 +55,7 @@ class Tickers:
         n = 0
         validTickers = []
         for x in tickers:
-            if n == amountOfTickers:
+            if n == int(self.ticker_count):
                 break
             else:
                 try:
@@ -69,4 +69,3 @@ class Tickers:
                     print("not valid")
 
         os.remove("./html.txt")
-
