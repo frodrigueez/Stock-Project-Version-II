@@ -15,8 +15,10 @@ class Tickers:
     A simple general ticker class
     """
     def __init__(self, ticker_count):
-        self.ticker_count = ticker_count
-
+        if int(ticker_count) <= 110: 
+            self.ticker_count = int(ticker_count)
+        else:
+            raise IndexError("ticker_count out of range; must be <= 110")
 
     def save_tickers(self,ticker_count):
         driver = webdriver.Chrome('./chromedriver')
