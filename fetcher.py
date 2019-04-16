@@ -71,13 +71,13 @@ class Fetcher:
         conn.commit()
         conn.close()
 
-    def fetch_all_data():
+    def fetch_all_data(self):
         """
         calls update_stock_info() for all tickers. 
         this will run for specified time period time_lim (in secs)
         """
-        #for ticker in tickers:
-        #    update_stock_info(ticker)
+        for ticker in self.tickers:
+            self.update_stock_info(ticker)
 
 if __name__ == "__main__":
     fetcher = Fetcher("stocks_now.db", 60) 
@@ -85,5 +85,4 @@ if __name__ == "__main__":
     fetcher.create_db()
 
 
-    fetcher.update_stock_info('YI')
-
+    fetcher.fetch_all_data()

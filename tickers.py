@@ -12,15 +12,24 @@ import os
 
 class Tickers:
     """
-    A simple general ticker class
+    A simple general Tickers class
     """
     def __init__(self, ticker_count):
+        """
+        Initalizes a Ticker object ticker with provided ticker_count argument
+        access this attribute with ticker.ticker_count
+        """
         if int(ticker_count) <= 110: 
             self.ticker_count = int(ticker_count)
         else:
             raise IndexError("ticker_count out of range; must be <= 110")
 
-    def save_tickers(self,ticker_count):
+    def save_tickers(self):
+        """
+        Uses selenium to crawl webpage and access up to 110 valid tickers using
+        price() from iex API to verify validity, then writes them to 'tickers.txt'
+        with one ticker per line 
+        """
         driver = webdriver.Chrome('./chromedriver')
         link = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQrender=download"
         driver.get(link)
@@ -48,8 +57,6 @@ class Tickers:
                     i = 0
                     i = i + 1
 
-        if int(self.ticker_count) > 110:
-            raise IndexError("n passed to save_tickers out of range. n must be <= 110")
         ticker_filename = "tickers.txt"
 
         f = open(ticker_filename, 'w')
