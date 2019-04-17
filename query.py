@@ -8,9 +8,9 @@ class Query:
         time value (which ids the specific minute for which to print data),
         and ticker (which ids the specific ticker for which to print data)
         """
-        self.db = db
-        self.time = time
-        self.ticker = ticker
+        self.db = str(db)
+        self.time = str(time)
+        self.ticker = str(ticker)
     
     def query_ticker(self):
         """
@@ -19,11 +19,6 @@ class Query:
         """
         conn = sqlite3.connect(self.db)
         c = conn.cursor()
-        c.execute('''SELECT * FROM STOCKDATA 
-                    WHERE TICKER = 'self.ticker'
-                    AND TIME = ?''',self.ticker, self.time)
-        print(c.fetchall()) 
-
-if __name__ == "__main__":
-    query = Query('stocks_now.db', '12:53', 'YI')        
-    query.query_ticker() 
+        t=(self.ticker,self.time)
+        c.execute("SELECT * FROM STOCKDATA WHERE TICKER = ? AND TIME=?",t)
+        print(c.fetchone()) 

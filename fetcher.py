@@ -91,10 +91,3 @@ class Fetcher:
                 break
 
 
-if __name__ == "__main__":
-    fetcher = Fetcher("stocks_now.db", 240)
-    fetcher.read_tickers()
-    fetcher.create_db()
-
-
-    fetcher.fetch_all_data()
