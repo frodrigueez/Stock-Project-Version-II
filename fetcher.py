@@ -78,18 +78,18 @@ class Fetcher:
         """
         start_time = time.time()
         elapsed_time = 0
-        while elapsed < int(self.time_limit):
+        while elapsed_time < int(self.time_limit):
             for ticker in self.tickers:
                 self.update_stock_info(ticker)
             elapsed_time = time.time() - start_time
-            if int(time_lim)-elapsed > 60:
+            if int(self.time_limit)-elapsed_time > 60:
                 time.sleep(60)
             else:
                 break
 
 
 if __name__ == "__main__":
-    fetcher = Fetcher("stocks_now.db", 60)
+    fetcher = Fetcher("stocks_now.db", 240)
     fetcher.read_tickers()
     fetcher.create_db()
 
