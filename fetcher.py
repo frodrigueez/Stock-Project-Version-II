@@ -18,7 +18,7 @@ class Fetcher:
         fetcher.db, fetcher.time_limit and fetcher.tickers
         """
         self.db = str(db)
-        self.time_limit = int(time_limit)
+        self.time_limit = time_limit
         self.tickers = []
 
     def read_tickers(self):
