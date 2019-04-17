@@ -20,6 +20,9 @@ class Fetcher:
         self.db = str(db)
         self.time_limit = time_limit
         self.tickers = []
+        self.read_tickers()
+        self.create_db()
+
 
     def read_tickers(self):
         """

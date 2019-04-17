@@ -23,7 +23,7 @@ if __name__ == "__main__":
         print(f"instantiate Fetchers class w {args.db} & {args.time_limit}")
         fetcher = Fetcher(args.db, args.time_limit)
         # call fetch_all_data()
-        #fetcher.fetch_all_data()
+        fetcher.fetch_all_data()
     elif args.operation == "Query":
         print(f"instantiate Query class w {args.db} & {args.time} & {args.ticker}")
         
