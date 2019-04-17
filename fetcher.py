@@ -12,7 +12,7 @@ class Fetcher:
     """
     def __init__(self, db, time_limit):
         """
-        initalizes a fetcher object with database name, and time_limit given db and time_limit. also 
+        initalizes a fetcher object with database name, and time_limit given db and time_limit. also
         initalizes object with empty tickers list.
         given Fetcher object fetcher, you can access these attributes with
         fetcher.db, fetcher.time_limit and fetcher.tickers
@@ -43,12 +43,12 @@ class Fetcher:
         print("Table created successfully")
         conn.commit()
         conn.close()
-    
+
     def update_stock_info(self,ticker):
         """
         updates stock information in database for argument ticker
-        """    
-    
+        """
+
         want = ['low', 'high', 'open', 'close', 'latestPrice', 'latestVolume']
 
         sys.stdout = open(os.devnull, 'w')
@@ -56,31 +56,40 @@ class Fetcher:
         sys.stdout = sys.__stdout__
 
         thevalues = {key:value for key, value in updatedInfo.items() if key in want}
-    
+
         detime = time.strftime("%H:%M")
-        
+
         conn = sqlite3.connect(self.db)
         c = conn.cursor()
-        
+
         print("Opened database successfully")
         print(f"the values to insert...\n{thevalues}")
         print(type(thevalues['latestVolume']))
         c.execute("INSERT INTO STOCKDATA VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (detime, ticker, thevalues['low'], thevalues['high'], thevalues['open'], thevalues['close'], thevalues['latestPrice'], thevalues['latestVolume']))
-       
+
 
         conn.commit()
         conn.close()
 
     def fetch_all_data(self):
         """
-        calls update_stock_info() for all tickers. 
+        calls update_stock_info() for all tickers.
         this will run for specified time period time_lim (in secs)
         """
-        for ticker in self.tickers:
-            self.update_stock_info(ticker)
+        start_time = time.time()
+        elapsed_time = 0
+        while elapsed < int(self.time_limit):
+            for ticker in self.tickers:
+                self.update_stock_info(ticker)
+            elapsed_time = time.time() - start_time
+            if int(time_lim)-elapsed > 60:
+                time.sleep(60)
+            else:
+                break
+
 
 if __name__ == "__main__":
-    fetcher = Fetcher("stocks_now.db", 60) 
+    fetcher = Fetcher("stocks_now.db", 60)
     fetcher.read_tickers()
     fetcher.create_db()
 
