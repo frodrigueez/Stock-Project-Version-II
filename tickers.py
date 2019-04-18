@@ -19,7 +19,7 @@ class Tickers:
         Initalizes a Ticker object ticker with provided ticker_count argument
         access this attribute with ticker.ticker_count
         """
-        if int(ticker_count) <= 110: 
+        if int(ticker_count) <= 110:
             self.ticker_count = int(ticker_count)
         else:
             raise IndexError("ticker_count out of range; must be <= 110")
@@ -28,7 +28,7 @@ class Tickers:
         """
         Uses selenium to crawl webpage and access up to 110 valid tickers using
         price() from iex API to verify validity, then writes them to 'tickers.txt'
-        with one ticker per line 
+        with one ticker per line
         """
         driver = webdriver.Chrome('./chromedriver')
         link = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQrender=download"
