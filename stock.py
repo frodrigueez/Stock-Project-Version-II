@@ -29,6 +29,7 @@ class Tickers:
         price() from iex API to verify validity, then writes them to 'tickers.txt'
         with one ticker per line 
         """
+        crawled = False
         driver = webdriver.Chrome('./chromedriver')
         link = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQrender=download"
         driver.get(link)
@@ -47,6 +48,9 @@ class Tickers:
         i = 1
         for line in html_file.readlines():
             x = re.search(tickerbaselink, line)
+
+        crawled = True
+        return True
 
 class Fetcher:
     """

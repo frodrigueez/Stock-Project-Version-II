@@ -21,6 +21,14 @@ def test_raises_exception_on_out_of_range_ticker_count():
     with pytest.raises(IndexError):
         ticker = Tickers(120)
 
+def test_web_crawling():
+    """
+    tests that selenium properly crawls the provided url
+    """
+    ticker = Tickers(20)
+    assert ticker.save_tickers() == True
+
+
 #def test_save_tickers():
 #    """
 #    This will test that the selenium we use to get valid tickers is working properly
