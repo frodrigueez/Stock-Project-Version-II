@@ -83,7 +83,7 @@ class Fetcher:
         c = conn.cursor()
         print("Opened database successfully")
 
-        c.execute('''CREATE TABLE IF NOT EXISTS STOCKDATA
+        c.execute('''CREATE TABLE IF NOT EXISTS StockData
             (TIME TEXT, TICKER TEXT, LOW FLOAT, HIGH FLOAT, OPEN FLOAT, CLOSE FLOAT, PRICE FLOAT, VOLUME INT)''')
         print("Table created successfully")
         conn.commit()
@@ -110,7 +110,7 @@ class Fetcher:
         print("Opened database successfully")
         print(f"the values to insert...\n{thevalues}")
         print(type(thevalues['latestVolume']))
-        c.execute("INSERT INTO STOCKDATA VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (detime, ticker, thevalues['low'], thevalues['high'], thevalues['open'], thevalues['close'], thevalues['latestPrice'], thevalues['latestVolume']))
+        c.execute("INSERT INTO StockData VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (detime, ticker, thevalues['low'], thevalues['high'], thevalues['open'], thevalues['close'], thevalues['latestPrice'], thevalues['latestVolume']))
 
 
         conn.commit()
@@ -154,5 +154,5 @@ class Query:
         conn = sqlite3.connect(self.db)
         c = conn.cursor()
         t=(self.ticker,self.time)
-        c.execute("SELECT * FROM STOCKDATA WHERE TICKER = ? AND TIME=?",t)
+        c.execute("SELECT * FROM StockData WHERE TICKER = ? AND TIME=?",t)
         print(c.fetchone())
