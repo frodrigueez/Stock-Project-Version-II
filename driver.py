@@ -45,18 +45,16 @@ def driver():
     parser.add_argument("--ticker_count", help="used by Tickers class to specify number of valid tickers to be fetched")
     args = parser.parse_args()
     if args.operation == "Ticker":
-        print(f"instantiate Tickers class w {args.ticker_count}")
         tickers = Tickers(args.ticker_count)
         tickers.save_tickers()
     elif args.operation == "Fetcher":
-        print(f"instantiate Fetchers class w {args.db} & {args.time_limit}")
         fetcher = Fetcher(args.db, args.time_limit)
         # call fetch_all_data()
         fetcher.fetch_all_data()
     elif args.operation == "Query":
-        print(f"instantiate Query class w {args.db} & {args.time} & {args.ticker}")
         query = Query(args.db, args.time, args.ticker)
         query.query_ticker()
+
 if __name__ == "__main__":
     # process flagser
     driver()

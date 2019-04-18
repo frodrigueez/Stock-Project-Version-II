@@ -16,8 +16,12 @@ def test_read_tickers():
     assert fetcher1.tickers != []
    
 
-    #def test_create_db():
+def test_create_db():
+    fetcher1 = Fetcher('stocks_now3.db', 300)
+    assert fetcher1.hasDB == True
+    
+#def test_update_stock_info():
 
-    #def update_stock_info():
+#def test_fetch_all_data
 
 
