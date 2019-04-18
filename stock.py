@@ -11,14 +11,19 @@ from datetime import datetime
 
 class Tickers:
     """
-    A simple general Tickers class
+    Write one ticker symbol per line of the file tickers.txt. The number n will be provided to the driver
+    as an optional argument and will be at most 110.
     """
     def __init__(self, ticker_count):
         """
         Initalizes a Ticker object ticker with provided ticker_count argument
         access this attribute with ticker.ticker_count
+
+        :type ticker_count : integer
+
+        :param ticker_count : amount of tickers
         """
-        if int(ticker_count) <= 110: 
+        if int(ticker_count) <= 110:
             self.ticker_count = int(ticker_count)
         else:
             raise IndexError("ticker_count out of range; must be <= 110")
@@ -27,7 +32,7 @@ class Tickers:
         """
         Uses selenium to crawl webpage and access up to 110 valid tickers using
         price() from iex API to verify validity, then writes them to 'tickers.txt'
-        with one ticker per line 
+        with one ticker per line
         """
         crawled = False
         driver = webdriver.Chrome('./chromedriver')
@@ -50,7 +55,7 @@ class Tickers:
             x = re.search(tickerbaselink, line)
 
         crawled = True
-        return crawled
+        return True
 
 class Fetcher:
     """
@@ -62,6 +67,14 @@ class Fetcher:
         initalizes object with empty tickers list.
         given Fetcher object fetcher, you can access these attributes with
         fetcher.db, fetcher.time_limit and fetcher.tickers
+
+        :type db : string
+
+        :param db : name of database
+
+        :type time_limit : string
+
+        :param time_limit : data will be fetched for this amount of time
         """
         self.db = str(db)
         self.time_limit = time_limit
@@ -69,7 +82,7 @@ class Fetcher:
         self.hasDB = False
         self.read_tickers()
         self.create_db()
-        
+
 
 
     def read_tickers(self):
@@ -99,6 +112,10 @@ class Fetcher:
     def update_stock_info(self,ticker):
         """
         updates stock information in database for argument ticker
+
+        :type ticker : string
+
+        :param ticker : ticker name
         """
 
         want = ['low', 'high', 'open', 'close', 'latestPrice', 'latestVolume']
@@ -139,7 +156,7 @@ class Fetcher:
                 time.sleep(60)
             else:
                 break
-        
+
         timesup = True
         return timesup
 
@@ -148,11 +165,23 @@ class Query:
     a simple query class
     """
     def __init__(self, db, time, ticker):
-        """
-        This initalizes a Query object query with database file value,
-        time value (which ids the specific minute for which to print data),
-        and ticker (which ids the specific ticker for which to print data)
-        """
+            """
+            This initalizes a Query object query with database file value,
+            time value (which ids the specific minute for which to print data),
+            and ticker (which ids the specific ticker for which to print data)
+
+            :type db : string
+
+            :param db : name of database
+
+            :type time : string
+
+            :param time :the specific minute for which to print data
+
+            :type ticker : string
+
+            :param ticker : ticker name
+            """
         self.db = str(db)
         self.time = str(time)
         self.ticker = str(ticker)
