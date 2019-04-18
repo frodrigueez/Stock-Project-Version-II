@@ -1,4 +1,4 @@
-from tickers import Tickers
+from stock import Tickers
 import pytest
 
 def test___init__():
@@ -24,3 +24,5 @@ def count_tickers_in_file(fname):
         for i, l in enumerate(f):
             pass
         return i + 1
+
+
