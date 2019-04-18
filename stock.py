@@ -50,7 +50,7 @@ class Tickers:
             x = re.search(tickerbaselink, line)
 
         crawled = True
-        return True
+        return crawled
 
 class Fetcher:
     """
