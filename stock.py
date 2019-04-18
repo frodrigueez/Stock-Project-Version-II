@@ -165,23 +165,23 @@ class Query:
     a simple query class
     """
     def __init__(self, db, time, ticker):
-            """
-            This initalizes a Query object query with database file value,
-            time value (which ids the specific minute for which to print data),
-            and ticker (which ids the specific ticker for which to print data)
+        """
+        This initalizes a Query object query with database file value,
+        time value (which ids the specific minute for which to print data),
+        and ticker (which ids the specific ticker for which to print data)
 
-            :type db : string
+        :type db : string
 
-            :param db : name of database
+        :param db : name of database
 
-            :type time : string
+        :type time : string
 
-            :param time :the specific minute for which to print data
+        :param time :the specific minute for which to print data
 
-            :type ticker : string
+        :type ticker : string
 
-            :param ticker : ticker name
-            """
+        :param ticker : ticker name
+        """
         self.db = str(db)
         self.time = str(time)
         self.ticker = str(ticker)

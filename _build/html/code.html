@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Documentation &#8212; Stocks 1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Stocks’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-tickers">
+<span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-tickers" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="tickers.Tickers">
+<em class="property">class </em><code class="descclassname">tickers.</code><code class="descname">Tickers</code><span class="sig-paren">(</span><em>ticker_count</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Tickers" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple general Tickers class</p>
+<dl class="method">
+<dt id="tickers.Tickers.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>ticker_count</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Tickers.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initalizes a Ticker object ticker with provided ticker_count argument
+access this attribute with ticker.ticker_count</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tickers.Tickers.save_tickers">
+<code class="descname">save_tickers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Tickers.save_tickers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses selenium to crawl webpage and access up to 110 valid tickers using
+price() from iex API to verify validity, then writes them to ‘tickers.txt’
+with one ticker per line</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-query"></span><dl class="class">
+<dt id="query.Query">
+<em class="property">class </em><code class="descclassname">query.</code><code class="descname">Query</code><span class="sig-paren">(</span><em>db</em>, <em>time</em>, <em>ticker</em><span class="sig-paren">)</span><a class="headerlink" href="#query.Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>a simple query class</p>
+<dl class="method">
+<dt id="query.Query.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>db</em>, <em>time</em>, <em>ticker</em><span class="sig-paren">)</span><a class="headerlink" href="#query.Query.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This initalizes a Query object query with database file value,
+time value (which ids the specific minute for which to print data),
+and ticker (which ids the specific ticker for which to print data)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="query.Query.query_ticker">
+<code class="descname">query_ticker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#query.Query.query_ticker" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function prints the details corresponding to a specific
+time and ticker symbol to the terminal</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-fetcher"></span><dl class="class">
+<dt id="fetcher.Fetcher">
+<em class="property">class </em><code class="descclassname">fetcher.</code><code class="descname">Fetcher</code><span class="sig-paren">(</span><em>db</em>, <em>time_limit</em><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple fetcher class</p>
+<dl class="method">
+<dt id="fetcher.Fetcher.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>db</em>, <em>time_limit</em><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>initalizes a fetcher object with database name, and time_limit given db and time_limit. also
+initalizes object with empty tickers list.
+given Fetcher object fetcher, you can access these attributes with
+fetcher.db, fetcher.time_limit and fetcher.tickers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fetcher.Fetcher.create_db">
+<code class="descname">create_db</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher.create_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates database named after Fetcher instance, fetcher, fetcher.db value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fetcher.Fetcher.fetch_all_data">
+<code class="descname">fetch_all_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher.fetch_all_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>calls update_stock_info() for all tickers.
+this will run for specified time period time_lim (in secs)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fetcher.Fetcher.read_tickers">
+<code class="descname">read_tickers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher.read_tickers" title="Permalink to this definition">¶</a></dt>
+<dd><p>reads all tickers from ‘Ticker.txt’ and writes them to Fetcher instance, fetcher, fetcher.tickers where
+tickers is a list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fetcher.Fetcher.update_stock_info">
+<code class="descname">update_stock_info</code><span class="sig-paren">(</span><em>ticker</em><span class="sig-paren">)</span><a class="headerlink" href="#fetcher.Fetcher.update_stock_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>updates stock information in database for argument ticker</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-driver"></span><dl class="function">
+<dt id="driver.driver">
+<code class="descclassname">driver.</code><code class="descname">driver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#driver.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>a main module that takes the following flags:</p>
+<p>∗ operation: Values are: ’Fetcher’, ’Ticker’, or ’Query’ Based on the value of this variable, you will
+decide which class you will instantiate and the optional arguments whose values you will need.</p>
+<p>1. For ’Ticker’: Use the optional flag ’ticker count’ to instantiate Tickers class and then call the
+save tickers() function.</p>
+<p>2. For ’Fetcher’: Use the optional flags ’db’ and ’time limit to instantiate Fetcher class and then
+call the fetch all data() function.</p>
+<p>3. For ’Query’: Use the optional flags ’db’ and ’time’ and ’ticker’ to instantiate Query class and
+then call the function to fetch and print data from the database. The data must be printed out
+to the terminal when this operation is used.</p>
+<p>∗ time: Used by the Query class to identify the specific minute for which to print data. Optional
+argument used only for the Query class.</p>
+<p>∗ ticker: Used by the Query class to identify the specific ticker for which to print data. Optional
+argument used only for the Query class.</p>
+<p>∗ time limit: Used by the Fetcher class to identify the length of time in seconds for which to fetch
+data. Optional argument used only for the Fetcher class.</p>
+<p>∗ db: Used by the Fetcher and Query classes to specify the database file to be used. Optional argument
+used only for the Fetcher and Query classes.</p>
+<p>∗ ticker count: Used only by the Tickers class to specify the number of valid tickers to be fetched.
+Optional argument only used by Tickers class.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Stocks</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Stocks’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Fernanda Rodriguez & Guillermo Villegas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -16,7 +16,7 @@ def driver():
     call the fetch all data() function.
 
     3. For ’Query’: Use the optional flags ’db’ and ’time’ and ’ticker’ to instantiate Query class and
-        then call the function to fetch and print data from the database. The data must be printed out
+    then call the function to fetch and print data from the database. The data must be printed out
     to the terminal when this operation is used.
 
 
