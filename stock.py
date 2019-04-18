@@ -124,6 +124,7 @@ class Fetcher:
         calls update_stock_info() for all tickers.
         this will run for specified time period time_lim (in secs)
         """
+        timesup = False
         start_time = time.time()
         elapsed_time = 0
         while elapsed_time < int(self.time_limit):
@@ -134,6 +135,9 @@ class Fetcher:
                 time.sleep(60)
             else:
                 break
+        
+        timesup = True
+        return timesup
 
 class Query:
     """
