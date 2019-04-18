@@ -1,10 +1,7 @@
 import argparse
 import os
 import sys
-from tickers import Tickers
-from fetcher import Fetcher
-from query import Query
-
+from stock import Tickers, Fetcher, Query
 def driver():
     """
     a main module that takes the following flags:
