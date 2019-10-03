@@ -1,4 +1,3 @@
-
 import os.path
 import requests
 import re
@@ -6,8 +5,6 @@ from iex import Stock
 from selenium import webdriver
 import sys
 import os
-
-# fetches the first n valid tickers from the following URL and write tickes in
 
 
 class Tickers:
