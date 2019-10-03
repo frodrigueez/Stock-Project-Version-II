@@ -100,11 +100,9 @@ class Fetcher:
         """
         conn = sqlite3.connect(self.db)
         c = conn.cursor()
-        #print("Opened database successfully")
 
         c.execute('''CREATE TABLE IF NOT EXISTS StockData
             (TIME TEXT, TICKER TEXT, LOW FLOAT, HIGH FLOAT, OPEN FLOAT, CLOSE FLOAT, PRICE FLOAT, VOLUME INT)''')
-        #print("Table created successfully")
         self.hasDB = True
         conn.commit()
         conn.close()
@@ -131,9 +129,6 @@ class Fetcher:
         conn = sqlite3.connect(self.db)
         c = conn.cursor()
 
-        #print("Opened database successfully")
-        #print(f"the values to insert...\n{thevalues}")
-        #print(type(thevalues['latestVolume']))
         c.execute("INSERT INTO StockData VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (detime, ticker, thevalues['low'], thevalues['high'], thevalues['open'], thevalues['close'], thevalues['latestPrice'], thevalues['latestVolume']))
 
 
