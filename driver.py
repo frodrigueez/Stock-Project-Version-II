@@ -49,7 +49,6 @@ def driver():
         tickers.save_tickers()
     elif args.operation == "Fetcher":
         fetcher = Fetcher(args.db, args.time_limit)
-        # call fetch_all_data()
         fetcher.fetch_all_data()
     elif args.operation == "Query":
         query = Query(args.db, args.time, args.ticker)
